@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
@@ -49,7 +49,6 @@ export const Header = () => {
               <Dropdown.Item className="text-danger" style={{ cursor: "pointer" }} onClick={() => auth.logout()}>log out</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-          {/* <strong className="ms-2 text-danger" style={{ cursor: "pointer" }} onClick={() => auth.logout()}>log out</strong> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>

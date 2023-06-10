@@ -7,10 +7,12 @@ const ProductContext = ({ children }) => {
   // get user cart
   const [cart, setCart] = useState([]);
   useEffect(() => {
-    fetch(`${server}cart/user/${localStorage.getItem("user_id")}/`)
-      .then((e) => e.json())
-      .then((e) => setCart(e));
-  }, [cart])
+    if (localStorage.getItem('user_id')) {
+      fetch(`${server}cart/user/${localStorage.getItem("user_id")}/`)
+        .then((e) => e.json())
+        .then((e) => setCart(e));
+    }
+  }, [cart ,localStorage.getItem('user_id')])
 
   // get user cart
   const [orders, setOrders] = useState([]);
@@ -18,10 +20,12 @@ const ProductContext = ({ children }) => {
   const [status, setStatus] = useState('');
   useEffect(() => {
     // ?date=&status=
-    fetch(`${server}users/${localStorage.getItem('user_id')}/orders/?date=${date}&status=${status}`)
-      .then((e) => e.json())
-      .then((e) => setOrders(e));
-  }, [orders, date, status])
+    if (localStorage.getItem('user_id')) {
+      fetch(`${server}users/${localStorage.getItem('user_id')}/orders/?date=${date}&status=${status}`)
+        .then((e) => e.json())
+        .then((e) => setOrders(e));
+    }
+  }, [orders, date, status, localStorage.getItem('user_id')])
 
   // get all products
   const [products, setProducts] = useState([]);

@@ -19,6 +19,8 @@ const OrderDetails = ({e}) => {
                 <hr />
                 <strong>السعر النهائي</strong>
                 <strong>{e?.total_order_price}</strong>
+                <hr />
+                <strong>{e?.date_created.substring(0, 10)}</strong>
             </div>
         </div>
     )

@@ -1,7 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
 import { AuthContextProvider } from "../utlits/AuthContext";
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 const Login = () => {
   const auth = useContext(AuthContextProvider);

@@ -13,7 +13,8 @@ const AuthContext = ({ children }) => {
   const [user, setUser] = useState([])
 
 
-  const register = () => {
+  const register = (event) => {
+    event.preventDefault()
     fetch(`${server}register/`, {
       method: "POST",
       headers: {
@@ -41,7 +42,8 @@ const AuthContext = ({ children }) => {
       });
   };
 
-  const login = () => {
+  const login = (event) => {
+    event.preventDefault()
     fetch(`${server}login/`, {
       method: "POST",
       headers: {
@@ -54,15 +56,16 @@ const AuthContext = ({ children }) => {
     })
       .then((e) => e.json())
       .then((e) => {
-        const user = jwtDecode(e.access);
-        localStorage.setItem("user_id", user.user_id);
-        localStorage.setItem("access", e.access);
-        localStorage.setItem("refresh", e.refresh);
+        const user = jwtDecode(e?.access);
+        localStorage.setItem("user_id", user?.user_id);
+        localStorage.setItem("access", e?.access);
+        localStorage.setItem("refresh", e?.refresh);
         alert("تم تسجيل الدخول بنجاح");
         navigate("/");
       })
       .catch((e) => {
         alert("حدث شئ خطأ ما, تحقق من معلوماتك");
+        console.log(e);
       });
   };
 
@@ -73,14 +76,16 @@ const AuthContext = ({ children }) => {
   };
 
   useEffect(() => {
-    const getUser = () => {
-      fetch(`${server}users/${localStorage.getItem("user_id")}/`)
-        .then((e) => e.json())
-        .then((e) => setUser(e))
-    }
+    if (localStorage.getItem('user_id')) {
+      const getUser = () => {
+        fetch(`${server}users/${localStorage.getItem("user_id")}/`)
+          .then((e) => e.json())
+          .then((e) => setUser(e))
+      }
 
-    getUser()
-  }, [user])
+      getUser()
+    }
+  }, [user, username, email, password, localStorage.getItem('user_id')])
 
   const values = {
     register,
