@@ -12,12 +12,12 @@ const ProductContext = ({ children }) => {
         .then((e) => e.json())
         .then((e) => setCart(e));
     }
-  }, [cart ,localStorage.getItem('user_id')])
+  }, [cart, localStorage.getItem('user_id')])
 
   // get user cart
   const [orders, setOrders] = useState([]);
   const [date, setDate] = useState("");
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState("");
   useEffect(() => {
     // ?date=&status=
     if (localStorage.getItem('user_id')) {
@@ -25,7 +25,7 @@ const ProductContext = ({ children }) => {
         .then((e) => e.json())
         .then((e) => setOrders(e));
     }
-  }, [orders, date, status, localStorage.getItem('user_id')])
+  }, [date, status, localStorage.getItem('user_id')])
 
   // get all products
   const [products, setProducts] = useState([]);

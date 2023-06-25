@@ -26,6 +26,7 @@ const Orders = () => {
 
   const handleStatusChange = (event) => {
     orderContext?.setStatus(event.target.value);
+    console.log(event.target.value);
   };
 
   // console.log(orderContext?.date);
