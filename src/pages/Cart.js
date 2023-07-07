@@ -21,9 +21,9 @@ const Cart = () => {
       <br />
       <br />
       <br />
-      {productContext?.cart?.cart_items?.length == 0 ? <div className='w-100 text-center text-danger'><h1>لا يوجد منتجات في حقيبتك</h1></div> :productContext?.cart?.cart_items?.map((e) => <Product userContext={userContext} key={e.id} e={e} />)}
+      {productContext?.cart?.cart_items?.length === 0 ? <div className='w-100 text-center text-danger'><h1>لا يوجد منتجات في حقيبتك</h1></div> :productContext?.cart?.cart_items?.map((e) => <Product userContext={userContext} key={e.id} e={e} />)}
       <hr />
-      {productContext?.cart?.cart_items?.length == 0 ? null : <Order userContext={userContext} total={total} total_commission={total_commission} /> }
+      {productContext?.cart?.cart_items?.length === 0 ? null : <Order userContext={userContext} total={total} total_commission={total_commission} /> }
       <br />
       <br />
       <br />

@@ -12,6 +12,8 @@ const AuthContext = ({ children }) => {
   const [password, setPassword] = useState("");
   const [user, setUser] = useState([])
 
+  const user_id = localStorage.getItem('user_id')
+
 
   const register = (event) => {
     event.preventDefault()
@@ -28,7 +30,7 @@ const AuthContext = ({ children }) => {
     })
       .then((e) => e.json())
       .then((e) => {
-        if (e.username == 'A user with that username already exists.') {
+        if (e.username === 'A user with that username already exists.') {
           alert('اسم المستخدم موجود بالفعل, يرجي تغيير الاسم')
         }
         else {
@@ -85,7 +87,7 @@ const AuthContext = ({ children }) => {
 
       getUser()
     }
-  }, [user, username, email, password, localStorage.getItem('user_id')])
+  }, [user, username, email, password, user_id])
 
   const values = {
     register,

@@ -1,14 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import React, { useContext } from "react";
+import React from "react";
 import { Card, Carousel } from "react-bootstrap";
 import { server } from "../Server";
-import { AuthContextProvider } from "../utlits/AuthContext";
 
 export const ProductsRelated = ({ product }) => {
   const navigate = useNavigate();
-  const userContext = useContext(AuthContextProvider)
+  // const userContext = useContext(AuthContextProvider)
   return (
-    <Card id="products_cart_home">
+    <Card id="products_cart_home" className="mb-5">
       <Carousel>
         {product?.images?.map((image) => (
           <Carousel.Item key={image?.id}>
@@ -34,10 +33,6 @@ export const ProductsRelated = ({ product }) => {
             ? product.description.slice(0, 100) + "..."
             : product.description}
         </Card.Text>
-        <hr />
-        <Card.Text>Price: {product.Var[0].sell_price}</Card.Text>
-        {userContext?.user?.is_staff ? <Card.Text>EGP {product.Var[0].consumer_commission} :العمولة</Card.Text> : null}
-        {product?.Var[0]?.stock <= 5 ? <Card.Text>{product.Var[0].stock} :كمية المخزن</Card.Text> : null}
       </Card.Body>
     </Card>
   );

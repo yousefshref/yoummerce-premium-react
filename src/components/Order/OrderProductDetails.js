@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Carousel } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom'
 import { AuthContextProvider } from '../../utlits/AuthContext'
 
 const OrderProductDetails = ({ x }) => {

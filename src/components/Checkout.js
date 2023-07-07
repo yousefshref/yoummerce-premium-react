@@ -14,7 +14,7 @@ const Checkout = () => {
     const [orderItems, setOrderItems] = useState([])
 
     const productContext = useContext(ProductContextProvider)
-    const selectedState = productContext.states.find((state) => state.id == shippingTo);
+    const selectedState = productContext.states.find((state) => state.id === shippingTo);
 
     const navigate = useNavigate()
 
