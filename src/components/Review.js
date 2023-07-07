@@ -28,7 +28,7 @@ const Review = ({ product }) => {
                     <div className="border border-danger border-1 p-3 rounded-4" style={{ width: "90%" }}>
                         <div className="d-flex flex-row justify-content-end">
                             <strong className="mt-auto mb-auto me-2">{"تم الرد من المسؤول"}</strong>
-                            <img alt='profile' src="/admin_pc.jpg" style={{ width: "50px", borderRadius: "100px" }} />
+                            {/* <img alt='profile' src="/admin_pc.jpg" style={{ width: "50px", borderRadius: "100px" }} /> */}
                         </div>
                         <div>
                             <p>{product?.reply}</p>
